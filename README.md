@@ -2,7 +2,9 @@
 
 > An AI-powered marketing content generator that helps brands create compelling marketing material from product images and brand details.
 
-![BrandAI](https://img.shields.io/badge/AI-Powered-9f6eff?style=flat-square) ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square) ![Node.js](https://img.shields.io/badge/Node.js-Express-green?style=flat-square) ![Claude](https://img.shields.io/badge/Claude-Sonnet-orange?style=flat-square)
+![BrandAI](https://img.shields.io/badge/AI-Powered-9f6eff?style=flat-square) ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square) ![Node.js](https://img.shields.io/badge/Node.js-Express-green?style=flat-square) Gorq API
+
+## Live Demo link
 
 ---
 
