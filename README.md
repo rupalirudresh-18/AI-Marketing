@@ -5,6 +5,7 @@
 ![BrandAI](https://img.shields.io/badge/AI-Powered-9f6eff?style=flat-square) ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square) ![Node.js](https://img.shields.io/badge/Node.js-Express-green?style=flat-square) Gorq API
 
 ## Live Demo link
+https://ai-marketing-b4z7.onrender.com
 
 ---
 
@@ -81,7 +82,7 @@ User Input (image + brand details)
           ↓
    POST /api/analyze
           ↓
-   Claude Vision + Text Analysis
+    Vision + Text Analysis
    → Product category detection
    → Brand tone profiling
    → Audience segmentation
@@ -93,7 +94,7 @@ User Input (image + brand details)
           ↓
    POST /api/generate-content
           ↓
-   Claude Copywriting
+    Copywriting
    → 3x Instagram captions (Storytelling, Question, Bold)
    → 3x Ad copy (Facebook/Instagram, Google, LinkedIn)
    → 5x Hooks (Curiosity, Problem, Shock, Social Proof, Story)
@@ -102,7 +103,7 @@ User Input (image + brand details)
           ↓
    POST /api/generate-creative
           ↓
-   Claude Creative Director
+    Creative Director
    → 3x Reel ideas (with viral potential scoring)
    → 3x Carousel ideas (with slide breakdowns)
    → 3x Campaign strategies (with budget tiers)
@@ -165,10 +166,3 @@ The UI uses a luxury marketing aesthetic:
 
 ---
 
-## Built with Claude
-
-This application uses Anthropic's Claude Sonnet model for all AI tasks. Claude analyzes product images using vision capabilities and generates contextually appropriate marketing content based on brand personality and target audience.
-
----
-
-*Built for Vaij & Company Internship Assignment*
