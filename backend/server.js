@@ -381,3 +381,52 @@ app.listen(PORT, () => {
   console.log(`🚀 BrandAI backend running on http://localhost:${PORT}`);
   console.log(`🤖 Using Groq AI (llama-3.3-70b-versatile)`);
 });
+
+// GET /api/generate-image — Proxy Pollinations.ai (bypasses browser CORS)
+app.get("/api/generate-image", async (req, res) => {
+  try {
+    const { prompt, width = "768", height = "768", seed } = req.query;
+    if (!prompt) return res.status(400).json({ error: "prompt required" });
+
+    const s = seed || Math.floor(Math.random() * 99999);
+    const encoded = encodeURIComponent(String(prompt));
+    const url = `https://image.pollinations.ai/prompt/${encoded}?width=${width}&height=${height}&seed=${s}&nologo=true&model=flux`;
+
+    console.log("Fetching image:", url.slice(0, 120) + "...");
+
+    const https = require("https");
+    const http = require("http");
+
+    function fetchWithRedirects(targetUrl, hops = 0) {
+      return new Promise((resolve, reject) => {
+        if (hops > 6) return reject(new Error("Too many redirects"));
+        const lib = targetUrl.startsWith("https") ? https : http;
+        const req2 = lib.get(targetUrl, {
+          headers: { "User-Agent": "Mozilla/5.0 BrandAI/1.0", "Accept": "image/*" },
+          timeout: 60000,
+        }, (resp) => {
+          if ([301,302,303,307,308].includes(resp.statusCode) && resp.headers.location) {
+            resp.resume();
+            return resolve(fetchWithRedirects(resp.headers.location, hops + 1));
+          }
+          if (resp.statusCode !== 200) {
+            resp.resume();
+            return reject(new Error("HTTP " + resp.statusCode));
+          }
+          resolve(resp);
+        });
+        req2.on("error", reject);
+        req2.on("timeout", () => { req2.destroy(); reject(new Error("Timeout after 60s")); });
+      });
+    }
+
+    const imgResp = await fetchWithRedirects(url);
+    res.setHeader("Content-Type", imgResp.headers["content-type"] || "image/jpeg");
+    res.setHeader("Cache-Control", "public, max-age=3600");
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    imgResp.pipe(res);
+  } catch (err) {
+    console.error("Image proxy error:", err.message);
+    res.status(500).json({ error: err.message || "Image generation failed" });
+  }
+});

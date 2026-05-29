@@ -11,21 +11,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <div className="bg-blob bg-blob-1" />
-        <div className="bg-blob bg-blob-2" />
+        <div className="bg-glow bg-glow-1" />
+        <div className="bg-glow bg-glow-2" />
         {children}
         <Toaster
           position="top-right"
           toastOptions={{
             style: {
-              background: "#1a1a28",
-              color: "#f0f0ff",
-              border: "1px solid rgba(255,255,255,0.08)",
+              background: "#16161f",
+              color: "#f4f4ff",
+              border: "1px solid rgba(255,255,255,0.09)",
               borderRadius: "12px",
-              fontSize: "14px",
+              fontSize: "13px",
+              fontFamily: "'Cabinet Grotesk', sans-serif",
+              fontWeight: 600,
+              boxShadow: "0 8px 28px rgba(0,0,0,0.5)",
             },
-            success: { iconTheme: { primary: "#00e5a0", secondary: "#1a1a28" } },
-            error: { iconTheme: { primary: "#ff4d8d", secondary: "#1a1a28" } },
+            success: { iconTheme: { primary: "#10b981", secondary: "#16161f" } },
+            error:   { iconTheme: { primary: "#ff6b6b", secondary: "#16161f" } },
           }}
         />
       </body>
