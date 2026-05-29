@@ -338,7 +338,7 @@ export default function Home() {
                 <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px" }}>
                   <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#10b981" }} />
                   <p style={{ fontSize: "12px", fontWeight: 800, color: "#34d399", letterSpacing: "0.05em", textTransform: "uppercase", fontFamily: "'Cabinet Grotesk', sans-serif" }}>
-                    Powered by Claude AI
+
                   </p>
                 </div>
                 <p style={{ fontSize: "12px", color: "var(--text-2)", lineHeight: 1.55, fontFamily: "'Cabinet Grotesk', sans-serif" }}>
